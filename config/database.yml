@@ -27,10 +27,10 @@ development:
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  username: <%= ENV.fetch("DB_USERNAME") { "postgres" } %>
+  username: <%= ENV.fetch("DB_USERNAME") %>
 
   # The password associated with the PostgreSQL role (username).
-  password: <%= ENV.fetch("DB_PASSWORD") { "vendelo" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -56,7 +56,8 @@ development:
 test:
   <<: *default
   database: vendelo_test
-
+  username: <%= ENV.fetch("DB_USERNAME") %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
